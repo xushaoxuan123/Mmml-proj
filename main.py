@@ -220,10 +220,10 @@ if __name__ == '__main__':
 
     parser.add_argument('--embed_size', type=int, default=512, metavar='N', help='embedding size (default: 256)')
     parser.add_argument('--batch_size', type=int, default=24, metavar='N', help='batch size (default: 24)')
-    parser.add_argument('--lr', type=float, default=1e-4, help='initial learning rate (default: 2e-3)')
+    parser.add_argument('--lr', type=float, default=1e-5, help='initial learning rate (default: 2e-3)')
     parser.add_argument('--optim', type=str, default='Adam', help='optimizer to use (default: Adam)')
     parser.add_argument('--num_epochs', type=int, default=50, help='number of epochs (default: 50)')
-    parser.add_argument('--when_decay', type=int, default=30, help='when to decay learning rate (default: 30)')
+    parser.add_argument('--when_decay', type=int, default=5, help='when to decay learning rate (default: 30)')
     parser.add_argument('--seed', type=int, default=2024, help='random seed')
     parser.add_argument('--num_layers', type=int, default=6, help='number of Transformer decoder layers (default: 6)')
     parser.add_argument('--nhead', type=int, default=8, help='number of heads in the Transformer decoder (default: 8)')

@@ -1,32 +1,40 @@
-### Run Demo Code
-
-**Environment**
-
+# Environment
+The environment configuration of this repository is a bit of tricky, we recommend you to do the following steps:
 ```bash
-    conda create --name multimodal5 python=3.10
-    conda activate multimodal5
+    conda create -n mmml-proj python=3.11
+    conda activate mmml-proj
 
-    pip install torch torchvision
-    pip install spacy
-    pip install pandas
-    pip install matplotlib
-
-    python -m spacy download en_core_web_sm
-
-    python main.py
+    pip install salesforce-lavis
+    pip install opencv-python
+    pip install transformers==4.34
+    pip install nltk
 ```
+It seems that `transformers==4.34` conflicts with `salesforce-lavis==1.0.2` but in our experiments it turned out okay.
 
-**Dataset**
+# Dataset
 
+Flickr8K
+
+# Method
+
+Visual Encoder: ViT-L/14 (Inherited from QFormer)
+
+Vision-Text Adapter: QFormer Block (To generate query tokens)
+
+Text Decoder: TinyLlama/TinyLlama-1.1B-Chat-v1.0. For training and inference we follow the format 
+
+- ```<Prompt><BOS><query token> ```
+
+or without prompt
+
+- ```<BOS><query token> ```
+
+# Running script
+For training model
 ```bash
-    pip install kagglehub
+HF_ENDPOINT=https://hf-mirror.com python main.py 
 ```
-
-```python
-    import kagglehub
-
-    # Download latest version
-    path = kagglehub.dataset_download("adityajn105/flickr8k")
-
-    print("Path to dataset files:", path)
+For testing model on the validation set
+```
+HF_ENDPOINT=https://hf-mirror.com python test.py 
 ```
